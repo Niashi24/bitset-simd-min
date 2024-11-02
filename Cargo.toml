@@ -1,0 +1,24 @@
+[package]
+name = "bitset-simd-min"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+crate-type = [
+	"staticlib", # for hardware
+	"dylib",     # for simulator
+	"rlib",      # to link with bin
+]
+
+[dependencies]
+playdate = "*"
+fixedbitset = { version = "0.5.7", default-features = false }
+
+
+# See more about playdate metadata:
+# https://github.com/boozook/playdate/blob/main/support/build/README.md#assets
+[package.metadata.playdate]
+bundle-id = "com.yourcompany.bitset.simd.min"
+description = "Description of bitset-simd-min program."
+options = { assets = { dependencies = true, overwrite = true } }
